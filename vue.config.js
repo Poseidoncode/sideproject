@@ -3,7 +3,7 @@ module.exports = {
     ? '/sideproject/'
     : '/',
   devServer: {
-      proxy: "https://tw.rter.info/",
+      proxy: "https://openapi.taifex.com.tw/",
       port: 80,
       open: process.platform === "darwin",
     },

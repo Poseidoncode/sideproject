@@ -17,10 +17,28 @@ export default {
       info: null,
     };
   },
-  mounted() {
-    axios
-      .get("https://api.coindesk.com/v1/bpi/currentprice.json")
-      .then((response) => (this.info = response));
+  async mounted() {
+    // const ret = await axios.get(`${"v1/DailyForeignExchangeRates"}`);
+    const ret = await axios.get(
+      `${
+        document.domain.includes("localhost")
+          ? "v1/DailyForeignExchangeRates"
+          : "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates"
+      }`
+    );
+
+    // const domainIsLocal = document.domain.includes("http://localhost")
+    //   ? true
+    //   : false;
+    // axios
+    //   .get(
+    //     `${
+    //       domainIsLocal
+    //         ? "v1/DailyForeignExchangeRates"
+    //         : "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates"
+    //     }`
+    //   )
+    //   .then((response) => (this.info = response));
   },
 };
 </script>
