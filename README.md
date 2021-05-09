@@ -19,4 +19,4 @@ npm run build
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ### Github Pages
-https://poseidoncode.github.io/sideproject/test
+https://poseidoncode.github.io/sideproject/
