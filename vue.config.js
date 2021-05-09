@@ -3,7 +3,8 @@ module.exports = {
     ? '/sideproject/'
     : '/',
   devServer: {
-      proxy: "https://openapi.taifex.com.tw/",
+      // proxy: "https://openapi.taifex.com.tw/",
+      proxy: "https://mis.twse.com.tw/stock/",
       port: 80,
       open: process.platform === "darwin",
     },
