@@ -1,11 +1,12 @@
 <template>
-  <div class="test">123</div>
+  <Button label="成功按钮" class="p-button-success" />
 </template>
 
 <script>
 // @ is an alias to /src
 import HelloWorld from "@/components/HelloWorld.vue";
 import axios from "axios";
+import Dialog from "primevue/dialog";
 
 export default {
   name: "Home",
