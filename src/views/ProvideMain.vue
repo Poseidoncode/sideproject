@@ -1,5 +1,6 @@
 <template>
   <div class="test">123</div>
+  <addCount />
 </template>
 
 <script>
@@ -16,6 +17,7 @@ export default {
   },
   setup() {
     provide("index", index);
+    console.log("index", index);
     index.addCount();
   },
 };

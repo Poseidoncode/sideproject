@@ -16,3 +16,9 @@ const addCount = (val) => {
   data = data + 1;
   setCount(data);
 };
+
+export default {
+  state: readonly(stateRef),
+  setCount,
+  addCount,
+};

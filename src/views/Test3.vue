@@ -18,15 +18,14 @@ export default {
     };
   },
   async mounted() {
-    const domainIsLocal = document.domain.includes("localhost");
-    const ret = await axios.get(
-      `${
-        domainIsLocal
-          ? "v1/DailyForeignExchangeRates"
-          : "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates"
-      }`
-    );
-
+    // const domainIsLocal = document.domain.includes("localhost");
+    // const ret = await axios.get(
+    //   `${
+    //     domainIsLocal
+    //       ? "v1/DailyForeignExchangeRates"
+    //       : "https://openapi.taifex.com.tw/v1/DailyForeignExchangeRates"
+    //   }`
+    // );
     // const ret2 = await axios.get(
     //   `${
     //     domainIsLocal
