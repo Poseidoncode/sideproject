@@ -1,5 +1,5 @@
 <template>
-  <Button label="成功按钮2" class="p-button-success" />
+  <Button label="成功按钮1232" class="p-button-success" />
   <div
     class="max-w-md mx-auto bg-white rounded-xl shadow-md overflow-hidden md:max-w-2xl"
   >
