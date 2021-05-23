@@ -18,6 +18,7 @@ import InputNumber from "primevue/inputnumber";
 import "primevue/resources/themes/luna-blue/theme.css";
 import "primevue/resources/primevue.min.css";
 import "primeicons/primeicons.css";
+import './assets/tailwind.css'
 
 const app = createApp(App);
 
