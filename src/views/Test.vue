@@ -48,12 +48,12 @@ export default {
     };
   },
   mounted() {
-    // axios
-    //   .get("https://tw.rter.info/capi.php")
-    //   .then((response) => (this.info = response));
-    // axios
-    //   .get("https://openapi.taifex.com.tw/swagger.json")
-    //   .then((response) => (this.info = response));
+    axios
+      .get("https://tw.rter.info/capi.php123")
+      .then((response) => (this.info = response));
+    axios
+      .get("https://openapi.taifex.com.tw/swagger.json")
+      .then((response) => (this.info = response));
   },
 };
 </script>
