@@ -1,5 +1,9 @@
 <template>
   <section class="min-h-screen flex items-stretch text-white ">
+    <Toast />
+    <Toast position="top-left" group="tl" />
+    <Toast position="bottom-left" group="bl" />
+    <Toast position="bottom-right" group="br" />
     <div
       class="lg:flex w-1/2 hidden bg-gray-500 bg-no-repeat bg-cover relative items-center"
       style="background-image: url(https://images.unsplash.com/photo-1559825481-12a05cc00344?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=701&q=80);"
@@ -98,21 +102,21 @@
             >in</span
           >
         </div>
-        <p class="text-gray-100">
-          or use email your account
-        </p>
+
         <form action="" class="sm:w-2/3 w-full px-4 lg:px-0 mx-auto">
           <div class="pb-2 pt-4">
             <input
-              type="email"
-              name="email"
-              id="email"
-              placeholder="Email"
+              v-model="account"
+              type="text"
+              name="account"
+              id="account"
+              placeholder="Account"
               class="block w-full p-4 text-lg rounded-sm bg-black"
             />
           </div>
           <div class="pb-2 pt-4">
             <input
+              v-model="password"
               class="block w-full p-4 text-lg rounded-sm bg-black"
               type="password"
               name="password"
@@ -128,6 +132,7 @@
           <div class="px-4 pb-2 pt-4">
             <button
               class="uppercase block w-full p-4 text-lg rounded-full bg-indigo-500 hover:bg-indigo-600 focus:outline-none"
+              @click.prevent="signIn"
             >
               sign in
             </button>
@@ -183,21 +188,63 @@
 </template>
 
 <script>
-// @ is an alias to /src
-
-import { provide } from "vue";
-import addCount from "@/components/provide/addCount.vue";
-import index from "@/composition/provide/index";
-
-export default {
-  name: "Provide",
-  components: {
-    addCount,
-  },
+import { ref, defineComponent } from "vue";
+import { useRouter } from "vue-router";
+import axios from "axios";
+import { useToast } from "primevue/usetoast";
+export default defineComponent({
+  name: "Login",
+  components: {},
   setup() {
-    provide("index", index);
-    console.log("index", index);
-    index.addCount();
+    const router = useRouter();
+    const toast = useToast();
+    const account = ref("");
+    const password = ref("");
+
+    const signIn = async () => {
+      const baseUrl = "https://vue3-course-api.hexschool.io";
+      const obj = {
+        username: account.value,
+        password: password.value,
+      };
+      try {
+        console.log("toast.", toast);
+        const res = await axios.post(`${baseUrl}/admin/signin`, obj);
+        const isFail = res.data.message == "登入失敗" ? true : false;
+
+        if (isFail) {
+          toast.add({
+            severity: "error",
+            summary: "登入失敗",
+            detail: "帳號或密碼錯誤，請重新輸入",
+            life: 3000,
+          });
+        } else {
+          toast.add({
+            severity: "success",
+            summary: "登入成功",
+            detail: "Message Content",
+            life: 3000,
+          });
+          const token = res.data.token;
+          const expired = res.data.expired;
+          document.cookie = `hexToken=${token}; expires=${new Date(expired)}`;
+          router.push("/test");
+        }
+      } catch (e) {
+        toast.add({
+          severity: "error",
+          summary: "Error Message",
+          detail: `${e}`,
+          life: 3000,
+        });
+      }
+    };
+    return {
+      account,
+      password,
+      signIn,
+    };
   },
-};
+});
 </script>

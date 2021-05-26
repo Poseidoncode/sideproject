@@ -14,11 +14,15 @@ import ProgressSpinner from "primevue/progressspinner";
 import Checkbox from "primevue/checkbox";
 import Textarea from "primevue/textarea";
 import InputNumber from "primevue/inputnumber";
+import Toast from "primevue/toast";
+import ToastService from "primevue/toastservice";
 // import "primevue/resources/themes/saga-blue/theme.css";
-import "primevue/resources/themes/luna-blue/theme.css";
+// import "primevue/resources/themes/fluent-light/theme.css";
+// import "primevue/resources/themes/luna-blue/theme.css";
+import "primevue/resources/themes/md-light-indigo/theme.css";
 import "primevue/resources/primevue.min.css";
 import "primeicons/primeicons.css";
-import './assets/tailwind.css'
+import "./assets/tailwind.css";
 
 const app = createApp(App);
 
@@ -27,6 +31,7 @@ app
   .use(router)
   .use(VueAxios, axios)
   .use(Primevue)
+  .use(ToastService)
   .mount("#app");
 
 app.component("Calendar", Calendar);
@@ -38,3 +43,4 @@ app.component("ProgressSpinner", ProgressSpinner);
 app.component("Checkbox", Checkbox);
 app.component("Textarea", Textarea);
 app.component("InputNumber", InputNumber);
+app.component("Toast", Toast);
