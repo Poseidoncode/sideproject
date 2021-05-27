@@ -192,7 +192,7 @@ import { ref, defineComponent } from "vue";
 import { useRouter } from "vue-router";
 import axios from "axios";
 import { useToast } from "primevue/usetoast";
-export default defineComponent({
+export default {
   name: "Login",
   components: {},
   setup() {
@@ -208,7 +208,6 @@ export default defineComponent({
         password: password.value,
       };
       try {
-        console.log("toast.", toast);
         const res = await axios.post(`${baseUrl}/admin/signin`, obj);
         const isFail = res.data.message == "登入失敗" ? true : false;
 
@@ -246,5 +245,5 @@ export default defineComponent({
       signIn,
     };
   },
-});
+};
 </script>
